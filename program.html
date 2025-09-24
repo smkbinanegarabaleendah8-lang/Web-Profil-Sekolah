@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Program Keahlian • SMK Bina Negara Baleendah</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="logo-wrap">
+        <img src="img/logo.png" alt="Logo Sekolah" class="logo-img">
+        <span class="logo-text">SMK Bina Negara Baleendah</span>
+      </div>
+  
+      <!-- Tombol Hamburger -->
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+  
+      <!-- Menu Navigasi -->
+      <nav id="nav-menu">
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="profil.html">Profil</a></li>
+          <li><a href="program.html">Program</a></li>
+          <li><a href="informasi.html">Informasi</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+
+<section class="section animate">
+  <h2>Program Keahlian</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="img/Tkj1.jpg"TKJ">
+      <h3>Teknik Komputer & Jaringan</h3>
+      <p>Jaringan, server, keamanan data, IoT dasar.</p>
+    </div>
+    <div class="card">
+      <img src= "img/Tkr1.webp"TKR">
+      <h3>Teknik Kendaraan Ringan</h3>
+      <p>Perawatan kendaraan, sistem injeksi, kelistrikan.</p>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="footer-content">
+
+    <!-- Bagian Icon Sosial Media -->
+    <div class="social-icons">
+      <a href="https://youtube.com/@smkbinanegarabaleendah6519" target="_blank" title="YouTube">
+        <img src="img/youtube.png" alt="YouTube Logo">
+      </a>
+      <a href="https://www.instagram.com/smkbinanegaraa" target="_blank" title="Instagram">
+        <img src="img/instagram.png" alt="Instagram Logo">
+      </a>
+      <a href="https://www.tiktok.com/@smkbinanegara" target="_blank" title="TikTok">
+        <img src="img/tiktok.png" alt="TikTok Logo">
+      </a>
+    </div>
+
+    <!-- Bagian Copyright -->
+    <p class="copyright">© 2025 SMK Bina Negara Baleendah. All rights reserved.</p>
+    <p class="credit">Dikembangkan dalam program Kerja Praktek oleh Mahasiswa Universitas Teknologi Bandung</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // Highlight menu aktif sesuai halaman
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  document.querySelectorAll("nav a").forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+</script>
+</body>
+</html>
