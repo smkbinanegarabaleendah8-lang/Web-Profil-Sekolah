@@ -650,6 +650,11 @@ footer p {
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   flex-shrink: 0;
+
+  display: block;
+  margin: 0 auto;           /* supaya tetap center */
+  object-fit: cover;        /* gambar tetap proporsional */
+  object-position: 55% top; /* geser sedikit ke kanan */
 }
 
 .sambutan-teks p {
@@ -677,6 +682,8 @@ footer p {
   .sambutan-foto img {
     width: 220px;
     margin-bottom: 15px;
+
+    object-position: 55% top; /* tetap bergeser ke kanan di HP */
   }
   .sambutan-teks {
     text-align: left; /* teks tetap rata kiri-kanan di HP */
@@ -690,6 +697,8 @@ footer p {
 @media (max-width: 480px) {
   .sambutan-foto img {
     width: 180px;
+
+    object-position: 55% top; /* tetap konsisten */
   }
   .sambutan-teks p {
     font-size: 14px;
@@ -697,7 +706,7 @@ footer p {
 }
 
 /* ===============================
-   HAMBURGER MENU + RESPONSIF NAV
+   HAMBURGER MENU + SIDEBAR
    =============================== */
 
 /* Tombol hamburger */
@@ -706,46 +715,118 @@ footer p {
   font-size: 28px;
   color: #fff;
   cursor: pointer;
+  z-index: 1101; /* biar selalu di atas sidebar */
 }
 
-/* Styling default nav */
+/* Sidebar */
 #nav-menu {
-  transition: all 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: -250px; /* sembunyikan di kiri */
+  width: 250px;
+  height: 100%;
+  background: #ff7b00;
+  padding-top: 60px;
+  transition: left 0.3s ease-in-out;
+  z-index: 1100;
+}
+
+#nav-menu.show {
+  left: 0; /* geser masuk */
+}
+
+#nav-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#nav-menu a {
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 20px;
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+#nav-menu a:hover {
+  background: rgba(0, 0, 0, 0.2);
 }
 
 /* Tablet & HP */
 @media (max-width: 768px) {
-  /* Tampilkan hamburger */
   .hamburger {
     display: block;
   }
+}
 
-  /* Sembunyikan nav default */
-  #nav-menu {
-    display: none;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 100%;
-    background: #ff7b00;
-    flex-direction: column;
-    text-align: center;
-    padding: 20px 0;
-    z-index: 1000;
+/* ===============================
+   NAVBAR DESKTOP
+   =============================== */
+   @media (min-width: 769px) {
+    /* Sidebar tidak dipakai di desktop */
+    #nav-menu {
+      position: static;
+      width: auto;
+      height: auto;
+      background: none;
+      padding: 0;
+      display: block;
+      transform: none;
+      left: 0;
+    }
+  
+    #nav-menu ul {
+      flex-direction: row;
+      gap: 20px;
+    }
+  
+    #nav-menu a {
+      color: #fff;
+      font-size: 16px;
+      padding: 8px 12px;
+    }
+  
+    /* Tombol hamburger disembunyikan */
+    .hamburger {
+      display: none;
+    }
   }
 
-  /* Menu muncul saat aktif */
-  #nav-menu.show {
-    display: flex;
-  }
+/* Semua link ada transisi halus */
+#nav-menu a {
+  color: #fff;
+  transition: color 0.3s ease, background 0.3s ease;
+}
 
-  #nav-menu ul {
-    flex-direction: column;
-    gap: 15px;
-  }
+/* Saat hover */
+#nav-menu a:hover {
+  color: #ffdd99;  /* contoh efek hover */
+}
 
-  #nav-menu a {
-    padding: 10px;
-    font-size: 16px;
-  }
+/* Saat aktif */
+#nav-menu a.active {
+  color: #000;        /* jadi hitam */
+  font-weight: 600;
+}
+
+#nav-menu a.active::after {
+  width: 100%;
+  opacity: 1;
+  transform: translateX(-50%) scaleX(1);
+  background: #fff;
+}
+
+#nav-menu a {
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+#nav-menu a:hover {
+  color: #000; /* saat dihover, warna berubah halus */
 }

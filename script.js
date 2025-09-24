@@ -56,15 +56,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// ============================
-// Hamburger Menu
-// ============================
-const hamburger = document.getElementById("hamburger");
-const navMenu = document.getElementById("nav-menu");
+// Sidebar toggle
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
 
-if (hamburger && navMenu) {
-  hamburger.addEventListener("click", () => {
-    navMenu.classList.toggle("show");
-    hamburger.classList.toggle("active");
+hamburger.addEventListener('click', () => {
+  navMenu.classList.toggle('show');
+});
+
+// Tutup sidebar setelah klik menu
+document.querySelectorAll('#nav-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    navMenu.classList.remove('show');
   });
-}
+});
