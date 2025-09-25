@@ -9,11 +9,16 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.animate').forEach(el => observer.observe(el));
 
-// Slideshow otomatis
+// Slideshow otomatis (DENGAN PERBAIKAN)
 let slideIndex = 0;
-showSlides();
+const slides = document.getElementsByClassName("mySlides");
+
+// Hanya jalankan slideshow jika elemen 'mySlides' ada di halaman ini
+if (slides.length > 0) {
+  showSlides();
+}
+
 function showSlides() {
-  let slides = document.getElementsByClassName("mySlides");
   for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";  
   }
@@ -23,17 +28,14 @@ function showSlides() {
   setTimeout(showSlides, 5000); // Ganti tiap 5 detik
 }
 
+// Logika untuk menu aktif (sudah bagus, tidak perlu diubah)
 document.addEventListener('DOMContentLoaded', () => {
   const links = document.querySelectorAll('nav a');
-
-  // nama file halaman sekarang (lowercase), default ke index.html kalau kosong
   let current = window.location.pathname.split('/').pop().toLowerCase();
   if (!current) current = 'index.html';
 
-  // bersihkan active lama
   links.forEach(a => a.classList.remove('active'));
 
-  // coba cocokkan berdasar href relatif
   let matched = false;
   links.forEach(a => {
     const href = (a.getAttribute('href') || '').split('/').pop().toLowerCase();
@@ -43,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // fallback: cocokkan via URL absolut (kalau server menulis path berbeda)
   if (!matched) {
     links.forEach(a => {
       const abs = new URL(a.href);
@@ -56,17 +57,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Sidebar toggle
+// Sidebar toggle (Hamburger Menu)
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('nav-menu');
 
-hamburger.addEventListener('click', () => {
-  navMenu.classList.toggle('show');
-});
-
-// Tutup sidebar setelah klik menu
-document.querySelectorAll('#nav-menu a').forEach(link => {
-  link.addEventListener('click', () => {
-    navMenu.classList.remove('show');
+// Pastikan elemen hamburger ada sebelum menambahkan event listener
+if (hamburger && navMenu) {
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
   });
-});
+
+  // Tutup sidebar setelah klik menu
+  document.querySelectorAll('#nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('show');
+    });
+  });
+}

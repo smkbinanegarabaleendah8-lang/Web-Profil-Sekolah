@@ -36,7 +36,7 @@
     </div>
   </header>
   
-  
+  <div class="container-konten">
   <section class="section animate">
     <h2>Kontak Kami</h2>
     <div class="cards">
@@ -67,6 +67,7 @@
       referrerpolicy="no-referrer-when-downgrade">
     </iframe>
   </section>
+  </div>
   
   
 
@@ -91,17 +92,6 @@
       <p class="credit">Dikembangkan dalam program Kerja Praktik oleh Mahasiswa Universitas Teknologi Bandung</p>
     </div>
   </footer>
-  
-
-  <!-- Script aktifkan menu sesuai halaman -->
-  <script>
-    const currentPage = window.location.pathname.split("/").pop();
-    document.querySelectorAll("nav a").forEach(link => {
-      if (link.getAttribute("href") === currentPage) {
-        link.classList.add("active");
-      }
-    });
-  </script>
 
   <script src="script.js"></script>
 </body>
