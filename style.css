@@ -697,6 +697,7 @@ nav a.active::after {
   
   .sambutan-container {
     gap: 20px;
+    align-items: center;
   }
   
 }
@@ -719,7 +720,7 @@ nav a.active::after {
     left: -250px;
     width: 250px;
     height: 100vh;
-    background: #ff7b00;
+    background: rgba(255, 123, 0, 0.5);
     padding-top: 60px;
     transition: left 0.3s ease-in-out;
     z-index: 1100;
@@ -779,14 +780,22 @@ nav a.active::after {
     text-align: center;
     gap: 20px;
   }
+
+  .sambutan-foto {
+    width: 100%;           
+    display: flex;         
+    justify-content: center;
+  }
   
   .sambutan-foto img {
-    width: 200px;
-    margin-bottom: 15px;
+    width: 220px;         
+    max-width: 100%;       
+    margin-bottom: 0; 
   }
   
   .sambutan-teks {
-    text-align: left;
+    text-align: justify; 
+    width: 100%; 
   }
   
   /* Table adjustments */
@@ -835,7 +844,10 @@ nav a.active::after {
   
   /* Sambutan */
   .sambutan-foto img {
-    width: 160px;
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   /* Tables */
